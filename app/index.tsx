@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
 const categories = [
@@ -6,9 +7,8 @@ const categories = [
 ];
 
 export default function HomeScreen() {
-    const handleCategoryPress = (category: any) => {
-        console.log(`Clicked on category: ${category}`);
-        // TODO: Implement navigation (e.g., router.push(`/category/${category}`))
+    const handleCategoryPress = (category: string) => {
+        router.push(`/category/${category}`);
     };
 
     return (
@@ -18,7 +18,7 @@ export default function HomeScreen() {
                 data={categories}
                 numColumns={2}
                 keyExtractor={(item) => item}
-                contentContainerStyle={{ paddingBottom: 20 }} // Prevents cut-off on small screens
+                contentContainerStyle={{ paddingBottom: 20 }}
                 renderItem={({ item }) => (
                     <TouchableOpacity style={styles.categoryItem} onPress={() => handleCategoryPress(item)}>
                         <Text style={styles.categoryText}>{item}</Text>
@@ -30,31 +30,8 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-        padding: 20,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-    categoryItem: {
-        width: '45%', // Ensures two items per row with spacing
-        aspectRatio: 1, // Makes it a square
-        margin: 10,
-        backgroundColor: '#f5f5f5',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 10,
-    },
-    categoryText: {
-        fontSize: 18,
-        color: '#000', // Ensure text is visible
-        fontWeight: 'bold',
-        textAlign: 'center', // Center text
-    },
+    container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff', padding: 20 },
+    title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
+    categoryItem: { width: '45%', aspectRatio: 1, margin: 10, backgroundColor: '#f5f5f5', alignItems: 'center', justifyContent: 'center', borderRadius: 10 },
+    categoryText: { fontSize: 18, fontWeight: 'bold', textAlign: 'center' },
 });
