@@ -8,9 +8,7 @@ export default function RootLayout() {
     return (
         <>
             <Stack>
-                <Stack.Screen name="index" options={{ headerShown: false, }} />
-                <Stack.Screen name="about" options={{ headerShown: false }} />
-                <Stack.Screen name="ycc" options={{ headerShown: false }} />
+                <Stack.Screen name="st" options={{ headerShown: false, }} />
             </Stack>
             <StatusBar style="light" translucent />
         </>

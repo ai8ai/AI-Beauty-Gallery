@@ -1,27 +1,60 @@
-import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
-import YccGallery  from '@/components/D1_YccGallery';
-import LocalGallery  from '@/components/D2_LocalGallery';
-import RateTheApp from '@/components/D5_Rate5Star';
+const categories = [
+    'Nature', 'Architecture', 'People', 'Animals', 'Technology',
+    'Art', 'Food', 'Travel', 'Sports', 'Abstract'
+];
 
-import { TITLES } from '@/constants/Titles';
+export default function HomeScreen() {
+    const handleCategoryPress = (category: any) => {
+        console.log(`Clicked on category: ${category}`);
+        // TODO: Implement navigation (e.g., router.push(`/category/${category}`))
+    };
 
-const Drawer = createDrawerNavigator();
-
-export default function MainPage() {
     return (
-        <Drawer.Navigator
-            screenOptions={{
-                drawerStyle: {
-                    width: 250,
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                },
-            }}
-        >
-            <Drawer.Screen name="YccGallery"   component={YccGallery}   options={{ title: TITLES.YCC_GALLERY }} />
-            <Drawer.Screen name="LocalGallery" component={LocalGallery}   options={{ title: TITLES.LOCAL_GALLERY }} />
-            <Drawer.Screen name="Rate"         component={RateTheApp}  options={{ title: TITLES.RATE }} />
-        </Drawer.Navigator>
+        <View style={styles.container}>
+            <Text style={styles.title}>Photo Categories</Text>
+            <FlatList
+                data={categories}
+                numColumns={2}
+                keyExtractor={(item) => item}
+                contentContainerStyle={{ paddingBottom: 20 }} // Prevents cut-off on small screens
+                renderItem={({ item }) => (
+                    <TouchableOpacity style={styles.categoryItem} onPress={() => handleCategoryPress(item)}>
+                        <Text style={styles.categoryText}>{item}</Text>
+                    </TouchableOpacity>
+                )}
+            />
+        </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        padding: 20,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    categoryItem: {
+        width: '45%', // Ensures two items per row with spacing
+        aspectRatio: 1, // Makes it a square
+        margin: 10,
+        backgroundColor: '#f5f5f5',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+    },
+    categoryText: {
+        fontSize: 18,
+        color: '#000', // Ensure text is visible
+        fontWeight: 'bold',
+        textAlign: 'center', // Center text
+    },
+});

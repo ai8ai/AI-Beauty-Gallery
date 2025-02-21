@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalSearchParams } from 'expo-router';
-import SlideshowYcc from '@/components/SlideshowYcc';
+import SlideshowYcc from '@/components/Slideshow';
 import { getImagesByCategory } from '@/constants/getYccImagesPath';
 
 const YccScreen = () => {
