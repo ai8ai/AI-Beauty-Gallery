@@ -2,62 +2,14 @@ import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 
-const imagesMap: Record<string, string[]> = {
-    Forests: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac2.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac3.jpg',
-    ],
-    Mountains: [
-        'https://ai8ai.github.io/abcat/anran/ac4.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac11.jpg',
-    ],
-    Oceans: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-    ],
-    Architecture: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-    ],
-    People: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-    ],
-    Animals: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-    ],
-    Art: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-    ],
-    Technology: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-    ],
-    Travel: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-    ],
-    Sports: [
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-        'https://ai8ai.github.io/abcat/anran/ac1.jpg',
-    ],
-};
+import { genImgList } from '@/dat/genImageList'
 
 export default function SlideshowScreen() {
-    const { category, subcategory } = useLocalSearchParams();
-    const images = imagesMap[subcategory as string] || [];
+    const { subCatId, imgPath, count } = useLocalSearchParams();
+    // "count": "10",   "id": "ar2",    "path": "abspecialtaste/finger/fi"}
+
+    const images = genImgList(imgPath as string, Number(count));
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToNextImage = () => {
@@ -73,14 +25,17 @@ export default function SlideshowScreen() {
     };
 
     const handleSwipeRight = () => {
-        console.log(images[currentIndex])
+        console.log(images[currentIndex]);
         goToPrevImage();
     };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{subcategory}</Text>
-            <Image source={{ uri: images[currentIndex] }} style={styles.image} />
+            {images.length > 0 ? (
+                <Image source={{ uri: images[currentIndex] }} style={styles.image} />
+            ) : (
+                <Text style={styles.noImageText}>No images available</Text>
+            )}
             <View style={styles.navigation}>
                 <TouchableOpacity onPress={handleSwipeRight} style={styles.navButton}>
                     <Text style={styles.navText}>←</Text>
@@ -111,7 +66,11 @@ const styles = StyleSheet.create({
     image: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-        resizeMode: 'contain', // Changed from 'cover' to 'contain'
+        resizeMode: 'contain',
+    },
+    noImageText: {
+        color: '#fff',
+        fontSize: 18,
     },
     navigation: {
         position: 'absolute',

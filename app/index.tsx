@@ -2,15 +2,17 @@
 import { router } from 'expo-router';
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 
-import CatInterface      from '@/types'; 
-import styles   from '@/styles/styles';
-import HomeList from '@/dat/HomeList'; // Import the Home Listed Categories
+import {CatInterface} from '@/types';
+import styles from '@/styles/styles';
+import { HomeList } from '@/dat/CatList'; // Import the Home Listed Categories
 
 export default function HomeScreen() {
     const handleCategoryPress = (cat: CatInterface) => {
         router.push({
             pathname: "/CatScreen",
-            params: { catId: cat.id, catTitle: cat.shorttitle },
+            params: {
+                catId: cat.id,
+            },
         });
     };
 

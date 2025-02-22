@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { View, FlatList, Image, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import styles from '@/styles/styles';
-import CatInterface from '@/types';
-import { subCatMapping } from '@/dat/mappingCat2Sub';
+import {CatInterface} from '@/types';
+import { Cat2Sub2Img } from '@/dat/CatList';
 
 const CategoryScreen: React.FC = () => {
-    const { catId } = useLocalSearchParams();
+    const { catId } = useLocalSearchParams();   // scene
     const [subCatList, setSubCatList] = useState<CatInterface[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const subCatData = subCatMapping[catId as string] || subCatMapping.default;
+        const subCatData = Cat2Sub2Img[catId as string] || Cat2Sub2Img.default;
         setSubCatList(subCatData);
+        console.log(subCatList)
         setLoading(false);
     }, [catId]);
 
@@ -23,9 +24,8 @@ const CategoryScreen: React.FC = () => {
     const handleSubCatPress = (item: CatInterface) => {
         router.push({
             pathname: "/cat2img", params: {
-                itemid: item.id,
-                title:  item.title,
-                path:   item.path,
+                subCatId: item.id,
+                imgPath:  item.path,
                 count:  item.count,
             }
         });

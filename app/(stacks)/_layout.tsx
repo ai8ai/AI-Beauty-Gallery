@@ -1,13 +1,14 @@
 // (stacks)/_layout.tsx
 import React, { useEffect } from "react";
-import { Stack, useNavigation } from "expo-router";
+import { Stack, useNavigation, useLocalSearchParams } from "expo-router";
 
 export default function StackLayout() {
     const navigation = useNavigation();
+    const { catId, catTitle } = useLocalSearchParams();
 
     useEffect(() => {
         navigation.setOptions({
-            headerTitle: "itemffftitle",
+            headerTitle: catTitle,
         });
     }, [navigation]);
 
