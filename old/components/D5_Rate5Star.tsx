@@ -3,7 +3,7 @@ import { View, FlatList, Image, Text, TouchableOpacity, Alert } from 'react-nati
 
 function RateTheApp() {
     return (
-        <View style={styles.container}>
+        <View style={styles.mainContainer}>
             <Text style={styles.permissionText}>coming soon!!!</Text>
         </View>
     );

@@ -1,37 +1,40 @@
+// index.tsx
 import { router } from 'expo-router';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 
-const categories = [
-    'Nature', 'Architecture', 'People', 'Animals', 'Technology',
-    'Art', 'Food', 'Travel', 'Sports', 'Abstract'
-];
+import CatInterface      from '@/types'; 
+import styles   from '@/styles/styles';
+import HomeList from '@/dat/HomeList'; // Import the Home Listed Categories
 
 export default function HomeScreen() {
-    const handleCategoryPress = (category: string) => {
-        router.push(`/category/${category}`);
+    const handleCategoryPress = (cat: CatInterface) => {
+        router.push({
+            pathname: "/CatScreen",
+            params: { catId: cat.id, catTitle: cat.shorttitle },
+        });
     };
 
+    const renderItem = ({ item }: { item: CatInterface }) => (
+        <TouchableOpacity
+            style={styles.catContainer}
+            onPress={() => handleCategoryPress(item)}
+        >
+            <Image source={{ uri: item.cover }} style={styles.catCoverImg} />
+            <Text style={styles.catTitle} numberOfLines={2}>
+                {item.title}
+            </Text>
+        </TouchableOpacity>
+    );
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Photo Categories</Text>
+        <View style={styles.mainContainer}>
             <FlatList
-                data={categories}
+                data={HomeList}
                 numColumns={2}
-                keyExtractor={(item) => item}
-                contentContainerStyle={{ paddingBottom: 20 }}
-                renderItem={({ item }) => (
-                    <TouchableOpacity style={styles.categoryItem} onPress={() => handleCategoryPress(item)}>
-                        <Text style={styles.categoryText}>{item}</Text>
-                    </TouchableOpacity>
-                )}
+                keyExtractor={(item) => item.id}
+                renderItem={renderItem}
+                contentContainerStyle={styles.mainGrid}
             />
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff', padding: 20 },
-    title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
-    categoryItem: { width: '45%', aspectRatio: 1, margin: 10, backgroundColor: '#f5f5f5', alignItems: 'center', justifyContent: 'center', borderRadius: 10 },
-    categoryText: { fontSize: 18, fontWeight: 'bold', textAlign: 'center' },
-});

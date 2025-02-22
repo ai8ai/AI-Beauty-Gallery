@@ -66,7 +66,7 @@ function MainGallery() {
     );
 
     return (
-        <View style={styles.container}>
+        <View style={styles.mainContainer}>
             {permissionGranted ? (
                 <FlatList
                     data={albums}

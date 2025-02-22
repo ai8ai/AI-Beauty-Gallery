@@ -44,11 +44,11 @@ const YccGallery = () => {
 
     const renderItem = ({ item }: { item: YccCategory }) => (
         <TouchableOpacity
-            style={styles.galleryItemContainer}
+            style={styles.catContainer}
             onPress={() => handleItemPress(item)}
         >
-            <Image source={{ uri: item.cover }} style={styles.galleryItemImage} />
-            <Text style={styles.galleryItemTitle} numberOfLines={1}>
+            <Image source={{ uri: item.cover }} style={styles.catCoverImg} />
+            <Text style={styles.catTitle} numberOfLines={1}>
                 {item.title}
             </Text>
         </TouchableOpacity>
@@ -78,7 +78,7 @@ const YccGallery = () => {
                 keyExtractor={(item) => item.id}
                 renderItem={renderItem}
                 numColumns={2}
-                contentContainerStyle={styles.galleryGrid}
+                contentContainerStyle={styles.mainGrid}
             />
         </View>
     );
