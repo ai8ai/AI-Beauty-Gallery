@@ -14,7 +14,6 @@ const CategoryScreen: React.FC = () => {
     useEffect(() => {
         const subCatData = Cat2Sub2Img[catId as string] || Cat2Sub2Img.default;
         setSubCatList(subCatData);
-        console.log(subCatList)
         setLoading(false);
     }, [catId]);
 
@@ -24,9 +23,8 @@ const CategoryScreen: React.FC = () => {
     const handleSubCatPress = (item: CatInterface) => {
         router.push({
             pathname: "/cat2img", params: {
-                subCatId: item.id,
                 imgPath:  item.path,
-                count:  item.count,
+                count:    item.count,
             }
         });
     };
@@ -42,6 +40,7 @@ const CategoryScreen: React.FC = () => {
             </Text>
         </TouchableOpacity>
     );
+    // console.log(subCatList)
 
     return (
         <View style={styles.mainContainer}>

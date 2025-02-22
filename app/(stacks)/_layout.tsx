@@ -10,7 +10,7 @@ export default function StackLayout() {
         navigation.setOptions({
             headerTitle: catTitle,
         });
-    }, [navigation]);
+    }, [navigation, catTitle]);
 
 return (
     <Stack>

@@ -11,7 +11,8 @@ export default function HomeScreen() {
         router.push({
             pathname: "/CatScreen",
             params: {
-                catId: cat.id,
+                catId: cat.id,          // for everything
+                catTitle: cat.title,    // for _layout
             },
         });
     };

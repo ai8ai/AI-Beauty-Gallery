@@ -35,6 +35,41 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 
+    imageContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover',
+    },
+
+
+    noImageText: {
+        color: '#fff',
+        fontSize: 18,
+    },
+    navigation: {
+        position: 'absolute',
+        top: '80%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        paddingHorizontal: 20,
+    },
+    navButton: {
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        padding: 10,
+        borderRadius: 5,
+    },
+    navText: {
+        color: '#fff',
+        fontSize: 20,
+    },
+
+
 });
 
 export default styles;
@@ -75,16 +110,7 @@ export default styles;
     // },
 
 
-    // imageContainer: {
-    //     flex: 1,
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    // },
-    // image: {
-    //     width: '100%',
-    //     height: '100%',
-    //     resizeMode: 'cover',
-    // },
+    
     // loading: {
     //     flex: 1,
     //     justifyContent: 'center',
