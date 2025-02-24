@@ -6,7 +6,7 @@ export const HomeList: CatInterface[] = [
     { id: "scene", title: "Scene", cover: genImgList("aicat/scene/sc", 10)[0] },
     { id: "art", title: "Art", cover: genImgList("aicat/art/ar", 10)[0] },
     { id: "bbs", title: "Bed Bath Sofa", cover: genImgList("aicat/bbs/bb", 5)[0] },
-    { id: "business", title: "Business Attire", cover: genImgList("aicat/business/bu", 5)[0] },
+    { id: "pro", title: "Business Attire", cover: genImgList("aicat/pro/pr", 5)[0] },
     { id: "i2", title: "Group", cover: genImgList("aicat/i2/i2", 5)[0] },
     { id: "strapless", title: "Strapless", cover: genImgList("aicat/strapless/st", 5)[0] },
     { id: "spagetti", title: "Spagetti", cover: genImgList("aicat/spagetti/sp", 5)[0] },
@@ -18,6 +18,10 @@ export const Cat2Sub2Img: SubCategoryConfig = {
         { id: "sc1", title: "Sea",  count: "10",  key: "sea/se" },
         { id: "sc2", title: "Lone", count: "10",  key: "lone/lo" },
         { id: "sc3", title: "Land", count: "10",  key: "land/la" },
+    ]),
+    i2: generateSubCategory("i2", [
+        { id: "i21", title: "Two",  count: "10",  key: "two/tw" },
+        { id: "i22", title: "More", count: "10",  key: "more/mo" },
     ]),
     art: generateSubCategory("iart", [
         { id: "ar1", title: "Face",   count: "10",  key: "face/fa" },
@@ -36,6 +40,15 @@ export const Cat2Sub2Img: SubCategoryConfig = {
         { id: "bb5", title: "Lying Down",count:"10",  key: "lying/ly" },
         { id: "bb6", title: "Lace",     count: "10",  key: "lace/la" },
         { id: "bb7", title: "Sequins",  count: "10",  key: "sequins/se" },
+        { id: "bb8", title: "Alien",    count: "10",  key: "alien/al" },
+    ]),
+    pro: generateSubCategory("ipro", [
+        { id: "pr1", title: "Stunning", count: "10",  key: "stunning/st" },
+        { id: "pr2", title: "Suite",    count: "10",  key: "suite/su" },
+        { id: "pr3", title: "Shirt",      count: "10",  key: "shirt/sh" },
+        { id: "pr4", title: "Professional",count: "10",  key: "professional/pr" },
+        { id: "pr5", title: "Office",count:"10",  key: "office/of" },
+        { id: "pr6", title: "Classroom",     count: "10",  key: "classroom/cl" },
     ]),
     
 };
