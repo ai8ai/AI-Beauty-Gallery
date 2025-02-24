@@ -3,7 +3,7 @@ import { View, FlatList, Image, Text, TouchableOpacity, ActivityIndicator } from
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import styles from '@/styles/styles';
 import {CatInterface} from '@/types';
-import { Cat2Sub2Img } from '@/dat/CatList';
+import { Cat2Sub2Img } from '@/dat/CatImgList';
 
 const CategoryScreen: React.FC = () => {
     const { catId } = useLocalSearchParams();   // scene

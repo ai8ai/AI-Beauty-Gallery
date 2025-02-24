@@ -4,7 +4,7 @@ import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 
 import {CatInterface} from '@/types';
 import styles from '@/styles/styles';
-import { HomeList } from '@/dat/CatList'; // Import the Home Listed Categories
+import { HomeList } from '@/dat/CatImgList'; // Import the Home Listed Categories
 
 export default function HomeScreen() {
     const handleCategoryPress = (cat: CatInterface) => {
