@@ -12,10 +12,10 @@ export default function StackLayout() {
         });
     }, [navigation, catTitle]);
 
-return (
-    <Stack>
-        <Stack.Screen name="cat2img" options={{ headerTitle: 'HomeD', title: 'DDD', headerShown: false }} />
-        <Stack.Screen name="CatScreen" options={{ headerTitle: 'CatS', title: 'DAsian2 Beauty', headerShown: false }} />
-    </Stack>
-);
+    return (
+        <Stack>
+            <Stack.Screen name="cat2img" options={{ headerTitle: 'HomeD', title: 'DDD', headerShown: false }} />
+            <Stack.Screen name="CatScreen" options={{ headerTitle: 'CatS', title: 'DAsian2 Beauty', headerShown: false }} />
+        </Stack>
+    );
 }
