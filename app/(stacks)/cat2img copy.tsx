@@ -29,6 +29,14 @@ export default function SlideshowScreen() {
         console.log("Current Image:", images[currentImage]);
     }, [currentImage]);
 
+    // Request media permissions
+    useEffect(() => {
+        (async () => {
+            const { status } = await MediaLibrary.requestPermissionsAsync();
+            setHasPermission(status === 'granted');
+        })();
+    }, []);
+
     useEffect(() => {
         const fetchImageList = async () => {
             try {
@@ -108,37 +116,26 @@ export default function SlideshowScreen() {
 
     // Download Image
     const downloadImage = async () => {
-        // Check for permission status
-        const { status } = await MediaLibrary.getPermissionsAsync();
-        console.log("Current Permission Status:", status);
-    
-        // If permission is not granted, ask for permission
-        if (status !== 'granted') {
-            const { status: newStatus } = await MediaLibrary.requestPermissionsAsync();
-            if (newStatus !== 'granted') {
-                showToast("Please grant permission to save images.");
-                return;
-            }
+        if (!hasPermission) {
+            showToast("Please grant media access to save images.");
+            return;
         }
-    
+
         try {
             const imageUrl = images[currentImage];
             const fileName = imageUrl.split('/').pop();
             const fileUri = `${FileSystem.documentDirectory}${fileName}`;
-    
+
             const { uri } = await FileSystem.downloadAsync(imageUrl, fileUri);
             const asset = await MediaLibrary.createAssetAsync(uri);
             await MediaLibrary.createAlbumAsync("Downloaded Images", asset, false);
-    
+
             showToast("Download complete! Image saved.");
         } catch (error) {
             console.error("Download Error:", error);
             showToast("Download failed. Try again.");
         }
     };
-    
-
-
 
     if (images.length === 0) {
         return <View><Text>Loading images...</Text></View>;

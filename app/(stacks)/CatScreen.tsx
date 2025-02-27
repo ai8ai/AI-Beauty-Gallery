@@ -3,7 +3,7 @@ import { View, FlatList, Image, Text, TouchableOpacity, ActivityIndicator } from
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import styles from '@/styles/styles';
 import {CatInterface} from '@/types';
-import { Cat2Sub2Img } from '@/dat/CatImgList';
+import { Cat2Sub } from '@/dat/CatImgList';
 
 const CategoryScreen: React.FC = () => {
     const { catId } = useLocalSearchParams();   // scene
@@ -12,7 +12,7 @@ const CategoryScreen: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const subCatData = Cat2Sub2Img[catId as string] || Cat2Sub2Img.default;
+        const subCatData = Cat2Sub[catId as string] || Cat2Sub.default;
         setSubCatList(subCatData);
         setLoading(false);
     }, [catId]);
@@ -23,8 +23,8 @@ const CategoryScreen: React.FC = () => {
     const handleSubCatPress = (item: CatInterface) => {
         router.push({
             pathname: "/cat2img", params: {
-                imgPath:  item.path,
-                count:    item.count,
+                folder:   item.folder,
+                repo:     catId,
             }
         });
     };

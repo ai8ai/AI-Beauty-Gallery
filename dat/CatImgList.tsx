@@ -1,74 +1,76 @@
 // Category
-import { CatInterface, SubCategoryConfig } from '@/types';
-import { genImgList } from './genImageList'
+import { CatInterface, Cat2SubMap } from '@/types';
+import { genJpgList } from './genImageList'
 
 export const HomeList: CatInterface[] = [
-    { id: "scene",  title: "Scene",             cover: genImgList("aicat/scene/sc", 10)[0] },
-    { id: "art",    title: "Art",               cover: genImgList("aicat/art/ar", 10)[0] },
-    { id: "bbs",    title: "Bed Bath Sofa",     cover: genImgList("aicat/bbs/bb", 5)[0] },
-    { id: "pro",    title: "Business Attire",   cover: genImgList("aicat/pro/pr", 5)[0] },
-    { id: "i2",     title: "Group",             cover: genImgList("aicat/i2/i2", 5)[0] },
-    { id: "back",   title: "Back & Butt",       cover: genImgList("aicat/back/ba", 5)[0] },
-    { id: "car",    title: "Car",               cover: genImgList("aicat/car/ca", 5)[0] },
+    { id: "isce", title: "Scene", cover: genJpgList("aicat/scene/sc", 5)[0] },
+    { id: "iart", title: "Art", cover: genJpgList("aicat/art/ar", 5)[0] },
+    { id: "ibbs", title: "Bed Bath Sofa", cover: genJpgList("aicat/bbs/bb", 5)[0] },
+    { id: "ipro", title: "Business Attire", cover: genJpgList("aicat/pro/pr", 5)[0] },
+    { id: "i2", title: "Group", cover: genJpgList("aicat/i2/i2", 5)[0] },
+    { id: "iback", title: "Back & Butt", cover: genJpgList("aicat/back/ba", 5)[0] },
+    { id: "icar", title: "Car", cover: genJpgList("aicat/car/ca", 5)[0] },
+    { id: "iout", title: "Outdoor", cover: genJpgList("aicat/out/ou", 5)[0] },
     // { id: "strapless", title: "Strapless", cover: genImgList("aicat/strapless/st", 5)[0] },
     // { id: "spagetti", title: "Spagetti", cover: genImgList("aicat/spagetti/sp", 5)[0] },
 ];
 
-export const Cat2Sub2Img: SubCategoryConfig = {
-    scene: generateSubCategory("isce", [
-        { id: "sc1", title: "Sea",  count: "10",  key: "sea/se" },
-        { id: "sc2", title: "Lone", count: "10",  key: "lone/lo" },
-        { id: "sc3", title: "Land", count: "10",  key: "land/la" },
-    ]),
-    i2: generateSubCategory("i2", [
-        { id: "i21", title: "Two",  count: "10",  key: "two/tw" },
-        { id: "i22", title: "More", count: "10",  key: "more/mo" },
-    ]),
-    back: generateSubCategory("iback", [
-        { id: "ba1", title: "Butt",  count: "10",  key: "butt/bu" },
-        { id: "ba2", title: "Back", count: "30",  key: "back/ba" },
-    ]),
-    art: generateSubCategory("iart", [
-        { id: "ar1", title: "Face",   count: "10",  key: "face/fa" },
-        { id: "ar2", title: "Flower", count: "10",  key: "flower/fl" },
-        { id: "ar3", title: "History",count: "10",  key: "history/hi" },
-        { id: "ar4", title: "Human",  count: "10",  key: "human/hu" },
-        { id: "ar5", title: "Leg",    count: "5",  key: "leg/le" },
-        { id: "ar6", title: "Lips",   count: "10",  key: "lips/li" },
-        { id: "ar7", title: "Nature", count: "10",  key: "nature/na" },
-    ]),
-    bbs: generateSubCategory("ibbs", [
-        { id: "bb1", title: "Stunning", count: "10",  key: "stunning/st" },
-        { id: "bb2", title: "Black",    count: "10",  key: "black/bl" },
-        { id: "bb3", title: "Red",      count: "10",  key: "red/re" },
-        { id: "bb4", title: "White",    count: "10",  key: "white/wh" },
-        { id: "bb5", title: "Lying Down",count:"10",  key: "lying/ly" },
-        { id: "bb6", title: "Lace",     count: "10",  key: "lace/la" },
-        { id: "bb7", title: "Sequins",  count: "10",  key: "sequins/se" },
-        { id: "bb8", title: "Alien",    count: "10",  key: "alien/al" },
-    ]),
-    pro: generateSubCategory("ipro", [
-        { id: "pr1", title: "Stunning", count: "10",  key: "stunning/st" },
-        { id: "pr2", title: "Suite",    count: "10",  key: "suite/su" },
-        { id: "pr3", title: "Shirt",      count: "10",  key: "shirt/sh" },
-        { id: "pr4", title: "Professional",count: "10",  key: "professional/pr" },
-        { id: "pr5", title: "Office",count:"10",  key: "office/of" },
-        { id: "pr6", title: "Classroom",     count: "10",  key: "classroom/cl" },
-    ]),
-    car: generateSubCategory("icar", [
-        { id: "ca1", title: "Stunning", count: "20",  key: "stunning/st" },
-        { id: "ca2", title: "Model",    count: "20",  key: "model/mo" },
-    ]),
-    
+export const Cat2Sub: Cat2SubMap = {
+    isce: [
+        { id: "sc1", title: "Sea", folder: "sea", cover: genJpgList("isce/sea/se", 5)[0] },
+        { id: "sc2", title: "Lone", folder: "lone", cover: genJpgList("isce/lone/lo", 5)[0] },
+        { id: "sc3", title: "Land", folder: "land", cover: genJpgList("isce/land/la", 5)[0] },
+    ],
+
+    iout: [
+        { id: "sc1", title: "Snow Field", folder: "sea", cover: genJpgList("iout/snow/sn", 5)[0] },
+        { id: "sc2", title: "Swimming Suit", folder: "lone", cover: genJpgList("iout/swim/sw", 5)[0] },
+        { id: "sc3", title: "Outdoor Life", folder: "field", cover: genJpgList("iout/field/fi", 5)[0] },
+    ],
+
+    i2: [
+        { id: "sc1", title: "Two", folder: "two", cover: genJpgList("i2/two/tw", 5)[0] },
+        { id: "sc2", title: "More", folder: "more", cover: genJpgList("i2/more/mo", 5)[0] },
+    ],
+
+    iback: [
+        { id: "sc1", title: "Butt", folder: "butt", cover: genJpgList("iback/butt/bu", 5)[0] },
+        { id: "sc2", title: "Back", folder: "back", cover: genJpgList("iback/back/ba", 5)[0] },
+    ],
+
+    iart: [
+        { id: "sc1", title: "Face", folder: "face", cover: genJpgList("iart/face/fa", 5)[0] },
+        { id: "sc2", title: "Flower", folder: "flower", cover: genJpgList("iart/flower/fl", 5)[0] },
+        { id: "sc3", title: "Sketch & Hand-drawing", folder: "sketch", cover: genJpgList("iart/sketch/sk", 5)[0] },
+        { id: "sc4", title: "Human", folder: "human", cover: genJpgList("iart/human/hu", 5)[0] },
+        { id: "sc5", title: "Leg", folder: "leg", cover: genJpgList("iart/leg/le", 5)[0] },
+        { id: "sc6", title: "Lips", folder: "lips", cover: genJpgList("iart/lips/li", 5)[0] },
+        { id: "sc7", title: "Nature", folder: "nature", cover: genJpgList("iart/nature/na", 5)[0] },
+    ],
+
+    icar: [
+        { id: "sc1", title: "Stunning", folder: "stunning", cover: genJpgList("icar/stunning/st", 5)[0] },
+        { id: "sc2", title: "Model", folder: "model", cover: genJpgList("icar/model/mo", 5)[0] },
+    ],
+
+    ibbs: [
+        { id: "bb1", title: "Stunning", folder: "stunning", cover: genJpgList("ibbs/stunning/st", 5)[0] },
+        { id: "bb2", title: "Black", folder: "black", cover: genJpgList("ibbs/black/bl", 5)[0] },
+        { id: "bb3", title: "Red", folder: "red", cover: genJpgList("ibbs/red/re", 5)[0] },
+        { id: "bb4", title: "White", folder: "white", cover: genJpgList("ibbs/white/wh", 5)[0] },
+        { id: "bb5", title: "Lying Down", folder: "lying", cover: genJpgList("ibbs/lying/ly", 5)[0] },
+        { id: "bb6", title: "Lace", folder: "lace", cover: genJpgList("ibbs/lace/la", 5)[0] },
+        { id: "bb7", title: "Sequins", folder: "sequins", cover: genJpgList("ibbs/sequins/se", 5)[0] },
+        { id: "bb8", title: "Alien", folder: "alien", cover: genJpgList("ibbs/alien/al", 5)[0] },
+    ],
+
+    ipro: [
+        { id: "pr1", title: "Stunning", folder: "stunning", cover: genJpgList("ipro/stunning/st", 5)[0] },
+        { id: "pr2", title: "Suite", folder: "suite", cover: genJpgList("ipro/suite/su", 5)[0] },
+        { id: "pr3", title: "Shirt", folder: "shirt", cover: genJpgList("ipro/shirt/sh", 5)[0] },
+        { id: "pr4", title: "Professional", folder: "professional", cover: genJpgList("ipro/professional/pr", 5)[0] },
+        { id: "pr5", title: "Office", folder: "office", cover: genJpgList("ipro/office/of", 5)[0] },
+        { id: "pr6", title: "Classroom", folder: "classroom", cover: genJpgList("ipro/classroom/cl", 5)[0] },
+    ],
 };
 
-// Helper function to generate subcategory data
-function generateSubCategory(subBasePath: string, items: { id: string;      title: string;      count: string;      key: string }[]) {
-    return items.map(({ id, title, count,  key }) => ({
-        id,
-        title,
-        count,
-        cover: genImgList(`${subBasePath}/${key}`, 10)[0],
-        path: `${subBasePath}/${key}`,
-    }));
-}
