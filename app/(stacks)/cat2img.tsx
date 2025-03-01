@@ -90,7 +90,7 @@ export default function SlideshowScreen() {
             stopAutoSlideshow();
             Animated.timing(scaleAnim, { toValue: 1, duration: 300, useNativeDriver: true }).start();
         } else {
-            Animated.timing(scaleAnim, { toValue: 0, duration: 2000, useNativeDriver: true }).start(() => {
+            Animated.timing(scaleAnim, { toValue: 0.1, duration: 2000, useNativeDriver: true }).start(() => {
                 startAutoSlideshow();
                 Animated.timing(scaleAnim, { toValue: 1, duration: 300, useNativeDriver: true }).start();
             });
