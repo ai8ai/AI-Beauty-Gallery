@@ -9,7 +9,7 @@ export const HomeList: CatInterface[] = [
     { id: "iart", title: "Artistic Elegance", cover: genJpgList("aicat/art/ar", 5)[0] },
     { id: "ipro", title: "Power Dressing, Professional", cover: genJpgList("aicat/pro/pr", 5)[0] },
     { id: "i2", title: "Dynamic Groups of Beauties", cover: genJpgList("aicat/i2/i2", 5)[0] },
-    { id: "iback", title: "Back & Beyond & Butt", cover: genJpgList("aicat/back/ba", 5)[0] },
+    { id: "iback", title: "Back & Beyond & Butt", cover: genJpg5("aicat/back")[0] },
     { id: "icar", title: "Elegance with Luxury Rides", cover: genJpgList("aicat/car/ca", 5)[0] },
     { id: "iout", title: "Nature & Adventure", cover: genJpgList("aicat/out/ou", 5)[0] },
     { id: "igif", title: "Motion Magic", shorttitle: "GIF", cover: genGifList("aicat/gif/gc", 5)[0] },
@@ -39,6 +39,7 @@ export const Cat2Sub: Cat2SubMap = {
         { id: "ich3", title: "Effortless Elegance", folder: "elegance", cover: genJpgList("iche/elegance/el", 5)[0] },
         { id: "ich4", title: "Ethereal Enchantment", folder: "enchantment", cover: genJpgList("iche/enchantment/en", 5)[0] },
         { id: "ich5", title: "Shadows & Secrets", folder: "mystery", cover: genJpgList("iche/mystery/my", 5)[0] },
+        { id: "ich6", title: "Stunning", folder: "stunning", cover: genJpg5("iche/stunning")[0] },
     ],
 
     ilolita: [
@@ -61,6 +62,7 @@ export const Cat2Sub: Cat2SubMap = {
         { id: "ifl2", title: "Ethereal Enchantment", folder: "enchantment", cover: genJpgList("iflo/enchantment/en", 5)[0] },
         { id: "ifl3", title: "Sensual Allure", folder: "sexy", cover: genJpgList("iflo/sexy/se", 5)[0] },
         { id: "ifl4", title: "Seaside Chic", folder: "swim", cover: genJpgList("iflo/swim/sw", 5)[0] },
+        { id: "ifl5",title: "Stunning", folder: "stunning", cover: genJpg5("iflo/stunning", 5)[0] },
     ],
 
     igif: [
@@ -99,14 +101,15 @@ export const Cat2Sub: Cat2SubMap = {
     ],
 
     ibbs: [
-        { id: "bb1", title: "Stunning", folder: "stunning", cover: genJpgList("ibbs/stunning/st", 5)[0] },
-        { id: "bb2", title: "Black", folder: "black", cover: genJpgList("ibbs/black/bl", 5)[0] },
+        { id: "bb1", title: "Stunning", folder: "stunning", cover: genJpg5("ibbs/stunning")[0] },
+        { id: "bb2", title: "Sultry", folder: "sultry", cover: genJpg5("ibbs/sultry")[0] },
+        { id: "bb7", title: "Sparkling", folder: "sparkling", cover: genJpgList("ibbs/sequins/se", 5)[0] },
+        { id: "bb9", title: "Strapless", folder: "strapless", cover: genJpgList("ibbs/strapless/se", 5)[0] },
         { id: "bb3", title: "Red", folder: "red", cover: genJpgList("ibbs/red/re", 5)[0] },
         { id: "bb4", title: "White", folder: "white", cover: genJpgList("ibbs/white/wh", 5)[0] },
         { id: "bb5", title: "Lying Down", folder: "lying", cover: genJpgList("ibbs/lying/ly", 5)[0] },
         { id: "bb6", title: "Lace", folder: "lace", cover: genJpgList("ibbs/lace/la", 5)[0] },
-        { id: "bb7", title: "Sequins", folder: "sequins", cover: genJpgList("ibbs/sequins/se", 5)[0] },
-        { id: "bb8", title: "Alien", folder: "alien", cover: genJpgList("ibbs/alien/al", 5)[0] },
+        { id: "bb8", title: "Minimal", folder: "mini", cover: genJpg5("ibbs/mini")[0] },
     ],
 
     ipro: [
@@ -125,10 +128,9 @@ export const Cat2Sub: Cat2SubMap = {
         { id: "isp4", title: "Violet", folder: "violet", cover: genJpgList("ispa/violet/vi", 5)[0] },
         { id: "isp5", title: "Pink", folder: "pink", cover: genJpgList("ispa/pink/pi", 5)[0] },
         { id: "isp6", title: "Lace", folder: "lace", cover: genJpgList("ispa/lace/la", 5)[0] },
-        { id: "isp7", title: "Nake", folder: "nake", cover: genJpgList("ispa/nake/na", 5)[0] },
-        { id: "isp8", title: "Haltertop", folder: "haltertop", cover: genJpgList("ispa/haltertop/ha", 5)[0] },
+        { id: "isp7", title: "Nude", folder: "nude", cover: genJpgList("ispa/nude/na", 5)[0] },
         { id: "isp9", title: "Floral", folder: "floral", cover: genJpgList("ispa/floral/fl", 5)[0] },
-        { id: "isp10", title: "Elegance", folder: "elegant", cover: genJpgList("ispa/elegant/el", 5)[0] },
+        { id: "isp10", title: "Elegance", folder: "elegance", cover: genJpgList("ispa/elegance/el", 5)[0] },
         { id: "isp11", title: "Camisole", folder: "camisole", cover: genJpgList("ispa/camisole/ca", 5)[0] },
         { id: "isp12", title: "Bodycon", folder: "bodycon", cover: genJpgList("ispa/bodycon/bo", 5)[0] },
         { id: "isp13", title: "Blue", folder: "blue", cover: genJpgList("ispa/blue/bl", 5)[0] },
@@ -149,8 +151,8 @@ export const Cat2Sub: Cat2SubMap = {
     istr: [
         { id: "ist1", title: "Bakunyuu", folder: "bakunyuu", cover: genJpg5("istr/bakunyuu")[0] },
         { id: "ist2", title: "Elegance", folder: "elegance", cover: genJpg5("istr/elegance")[0] },
-        { id: "ist3", title: "Floral", folder: "floral", cover: genJpg5("ispa/floral")[0] },
-        { id: "ist4", title: "Nake", folder: "nake", cover: genJpg5("istr/nake")[0] },
+        { id: "ist3", title: "Floral", folder: "floral", cover: genJpg5("istr/floral")[0] },
+        { id: "ist4", title: "Nude", folder: "nude", cover: genJpg5("istr/nude")[0] },
         { id: "ist5", title: "Night", folder: "night", cover: genJpg5("istr/night")[0] },
         { id: "ist6", title: "Sparkling Seduction", folder: "sparkling", cover: genJpg5("istr/sparkling")[0] },
         { id: "ist7", title: "Minimalist Sophistication", folder: "mini", cover: genJpg5("istr/mini")[0] },
