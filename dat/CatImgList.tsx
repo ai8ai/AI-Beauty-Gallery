@@ -156,6 +156,7 @@ export const Cat2Sub: Cat2SubMap = {
         { id: "ist7", title: "Minimalist Sophistication", folder: "mini", cover: genJpg5("istr/mini")[0] },
         { id: "ist8", title: "Sultry", folder: "sultry", cover: genJpg5("istr/sultry")[0] },
         { id: "ist9", title: "Tea Time", folder: "teatime", cover: genJpg5("istr/teatime")[0] },
+        { id: "ist10",title: "Stunning", folder: "stunning", cover: genJpg5("istr/stunning")[0] },
     ],    
 
     ideco: [
