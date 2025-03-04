@@ -103,8 +103,8 @@ export const Cat2Sub: Cat2SubMap = {
     ibbs: [
         { id: "bb1", title: "Stunning", folder: "stunning", cover: genJpg5("ibbs/stunning")[0] },
         { id: "bb2", title: "Sultry", folder: "sultry", cover: genJpg5("ibbs/sultry")[0] },
-        { id: "bb7", title: "Sparkling", folder: "sparkling", cover: genJpgList("ibbs/sequins/se", 5)[0] },
-        { id: "bb9", title: "Strapless", folder: "strapless", cover: genJpgList("ibbs/strapless/se", 5)[0] },
+        { id: "bb7", title: "Sparkling", folder: "sparkling", cover: genJpgList("ibbs/sparkling/se", 5)[0] },
+        { id: "bb9", title: "Strapless", folder: "strapless", cover: genJpg5("ibbs/strapless")[0] },
         { id: "bb3", title: "Red", folder: "red", cover: genJpgList("ibbs/red/re", 5)[0] },
         { id: "bb4", title: "White", folder: "white", cover: genJpgList("ibbs/white/wh", 5)[0] },
         { id: "bb5", title: "Lying Down", folder: "lying", cover: genJpgList("ibbs/lying/ly", 5)[0] },
