@@ -146,6 +146,7 @@ export const Cat2Sub: Cat2SubMap = {
         { id: "ire5", title: "Spaghetti", folder: "spaghetti", cover: genJpg5("ired/spaghetti")[0] },
         { id: "ire6", title: "Strapless", folder: "strapless", cover: genJpg5("ired/strapless")[0] },
         { id: "ire7", title: "Sultry", folder: "sultry", cover: genJpg5("ired/sultry")[0] },
+        { id: "ire8", title: "Halter Top", folder: "haltertop", cover: genJpg5("ired/haltertop")[0] },
     ],
     
     istr: [

@@ -1,4 +1,4 @@
-import { View, Text, Image, Animated, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Animated, Alert, TouchableOpacity, ActivityIndicator  } from 'react-native';
 import { ToastAndroid, Platform } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
 
@@ -137,11 +137,14 @@ export default function SlideshowScreen() {
         }
     };
     
-
-
-
     if (images.length === 0) {
-        return <View><Text>Loading images...</Text></View>;
+        
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#0000ff" />
+                <Text>Loading...</Text>
+            </View>
+        );
     }
 
     return (

@@ -200,20 +200,20 @@ const styles = StyleSheet.create({
     //     flex: 1,
     //     marginRight: 18,
     // },
-    // loadingContainer: {
-    //     flex: 1,
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    // },
-    // errorContainer: {
-    //     flex: 1,
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    // },
-    // errorText: {
-    //     color: 'red',
-    //     fontSize: 18,
-    // },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    errorContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    errorText: {
+        color: 'red',
+        fontSize: 18,
+    },
     // screenContainer: {
     //     flex: 1,
     //     justifyContent: 'center',
