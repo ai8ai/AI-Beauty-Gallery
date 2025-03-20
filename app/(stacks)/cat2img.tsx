@@ -29,6 +29,15 @@ export default function SlideshowScreen() {
         console.log("Current Image:", images[currentImage]);
     }, [currentImage]);
 
+
+    useEffect(() => {
+        if (images.length > 0) {
+            const nextIndex = (currentImage + 1) % images.length;
+            Image.prefetch(images[nextIndex]); // Preload next image
+        }
+    }, [currentImage]);
+
+    
     useEffect(() => {
         const fetchImageList = async () => {
             try {
