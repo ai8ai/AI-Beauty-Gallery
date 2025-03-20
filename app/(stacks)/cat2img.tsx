@@ -1,4 +1,4 @@
-import { View, Text, Image, Animated, Alert, TouchableOpacity, ActivityIndicator  } from 'react-native';
+import { View, Text, Image, Animated, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { ToastAndroid, Platform } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
 
@@ -23,12 +23,22 @@ export default function SlideshowScreen() {
     const [currentImage, setCurrentImage] = useState(0);
     const [isAutoSlideshow, setIsAutoSlideshow] = useState(false);
     const [hasPermission, setHasPermission] = useState(false);
+    const [resizeMode, setResizeMode] = useState<'cover' | 'contain'>('cover');
+
     const intervalRef = useRef<number | null>(null);
+
 
     useEffect(() => {
         console.log("Current Image:", images[currentImage]);
     }, [currentImage]);
 
+    useEffect(() => {
+        if (images.length > 0) {
+            getResizeMode(images[currentImage], (mode) => {
+                setResizeMode(mode);
+            });
+        }
+    }, [currentImage, images]);
 
     useEffect(() => {
         if (images.length > 0) {
@@ -37,7 +47,7 @@ export default function SlideshowScreen() {
         }
     }, [currentImage]);
 
-    
+
     useEffect(() => {
         const fetchImageList = async () => {
             try {
@@ -71,6 +81,20 @@ export default function SlideshowScreen() {
             }
         };
     }, [parentNavi]);
+
+    const getResizeMode = (imageUrl: string, callback: (mode: "cover" | "contain") => void) => {
+        Image.getSize(imageUrl, (width, height) => {
+            const aspectRatio = height/width;
+            console.log(aspectRatio.toFixed(2))
+
+            // Decide resizeMode based on aspect ratio
+            const mode = aspectRatio > 1.6 ? "cover" : "contain";
+            callback(mode);
+        }, (error) => {
+            console.error("Failed to get image size:", error);
+            callback("cover");  // Default to "cover" if error occurs
+        });
+    };
 
     // Manual navigation
     const goToNextImage = () => { setCurrentImage((prev) => (prev + 1) % images.length); };
@@ -120,7 +144,7 @@ export default function SlideshowScreen() {
         // Check for permission status
         const { status } = await MediaLibrary.getPermissionsAsync();
         console.log("Current Permission Status:", status);
-    
+
         // If permission is not granted, ask for permission
         if (status !== 'granted') {
             const { status: newStatus } = await MediaLibrary.requestPermissionsAsync();
@@ -129,25 +153,25 @@ export default function SlideshowScreen() {
                 return;
             }
         }
-    
+
         try {
             const imageUrl = images[currentImage];
             const fileName = imageUrl.split('/').pop();
             const fileUri = `${FileSystem.documentDirectory}${fileName}`;
-    
+
             const { uri } = await FileSystem.downloadAsync(imageUrl, fileUri);
             const asset = await MediaLibrary.createAssetAsync(uri);
             await MediaLibrary.createAlbumAsync("Downloaded Images", asset, false);
-    
+
             showToast("Download complete! Image saved.");
         } catch (error) {
             console.error("Download Error:", error);
             showToast("Download failed. Try again.");
         }
     };
-    
+
     if (images.length === 0) {
-        
+
         return (
             <View style={styles.loadingContainer}>
                 <ActivityIndicator size="large" color="#0000ff" />
@@ -165,7 +189,7 @@ export default function SlideshowScreen() {
             )}
             <TouchableOpacity onPress={toggleSlideshow} style={{ position: 'absolute', width: '100%', height: '100%' }}>
                 <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-                    <Image source={{ uri: images[currentImage] }} style={styles.sliderImage} />
+                    <Image source={{ uri: images[currentImage] }} style={[styles.sliderImage, { resizeMode }]} />
                 </Animated.View>
             </TouchableOpacity>
 
